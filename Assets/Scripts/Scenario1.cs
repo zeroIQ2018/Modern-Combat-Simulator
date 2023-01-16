@@ -34,7 +34,7 @@ public class Scenario1 : MonoBehaviour
             {
                 if (myArray[i, j] == "I")
                 {
-                    Instantiate( _inf, new Vector3(i, j, 0), Quaternion.identity);
+                    Instantiate( _inf, new Vector3(i, j, -0.1f), Quaternion.identity);
                 }
             }
         }

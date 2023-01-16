@@ -182,7 +182,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 2147483647
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -235,8 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf58a9751247e640b622a10bb896cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedx: 0
-  selectedy: 0
 --- !u!1 &1232199269
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,10 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f6604c1fb38524888df7c09348cd6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tilePrefab: {fileID: 206330292757793142, guid: 381f9386fc8cf2c4aa9e49e7e03e6840, type: 3}
+  _tilePrefab: {fileID: 3652413728886591320, guid: 381f9386fc8cf2c4aa9e49e7e03e6840, type: 3}
   _cam: {fileID: 519420032}
-  _width: 6
-  _height: 5
 --- !u!4 &1232199271
 Transform:
   m_ObjectHideFlags: 0
@@ -279,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232199269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 218.93762, y: -46.339405, z: -21.287615}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
