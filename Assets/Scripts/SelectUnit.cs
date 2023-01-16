@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class SelectUnit : MonoBehaviour
 {
@@ -17,7 +18,15 @@ public class SelectUnit : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            CastRay();
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                if (hit.collider != null)
+                {
+                    Debug.Log("killyourself");
+                }
+            }
         }
 
         void CastRay()
