@@ -41,11 +41,6 @@ public class SelectUnit : MonoBehaviour
                     x = selectedx;
                     y = selectedy;
                     selected = true;
-                    Debug.Log("you have selected ");
-                    Debug.Log(selectedy);
-                    Debug.Log("you have selected ");
-                    Debug.Log(selectedx);
-        
                 }
                     
                     

@@ -21,8 +21,6 @@ public class GridManager : MonoBehaviour
     void Start()
     {
         _cam.transform.position = new Vector3((float)_width / 2, (float)_height / 2 - 0.5f, -10);
-        Debug.Log(_width);
-        Debug.Log(_height);
         GenerateGrid();
     }
 
