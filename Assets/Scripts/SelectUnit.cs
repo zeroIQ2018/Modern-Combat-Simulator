@@ -9,54 +9,52 @@ public class SelectUnit : MonoBehaviour
     int selectedx;
     int selectedy;
     public static bool selected;
+    public Camera camera;
+    float ys;
+    float xs;
+    float x;
+    float y;
+    
+
+
     void Start()
     {
-
+        camera = Camera.main;
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
+            if (Physics.Raycast(ray, out hit))
+            {   
                 if (hit.collider != null)
-                {
-                    Debug.Log("killyourself");
-                }
-            }
-        }
-
-        void CastRay()
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
-            if (hit.collider != null)
-            {
-                float x = hit.collider.gameObject.transform.position.y;
-                float y = hit.collider.gameObject.transform.position.x;
-                if (selected == true)
-                {
-                    Scenario1.myArray[selectedy, selectedx] = "E";
-                    Scenario1.myArray[(int)y, (int)x] = "I";
-                    Debug.Log(x);
-                    Debug.Log(y);
+                Debug.Log($"{hit.collider.name} Detected",hit.collider.gameObject);
+                if(selected == true){
+                    x = hit.collider.transform.position.x;
+                    y = hit.collider.transform.position.y;
+                    Scenario1.myArray[(int)ys,(int)xs] = "E";
+                    Scenario1.myArray[(int)y,(int)x] = "I";
                     selected = false;
+                    
                 }
-                else if ("I" == Scenario1.myArray[(int)x, (int)y])
-                {
-                    x = selectedx;
-                    y = selectedy;
+                else{
+                    xs = hit.collider.transform.position.x;
+                    ys = hit.collider.transform.position.y;
                     selected = true;
                 }
-                    
-                    
-               
+                
+
             }
         }
+
     }
+
+    
+
 
 
 }

@@ -13,8 +13,8 @@ public class Scenario1 : MonoBehaviour
     { "E", "I", "I", "I", "I" },
     { "E", "E", "E", "I", "I" },
     { "I", "I", "I", "I", "E" },
-    { "I","E","E", "I","E" },
-    {"E","E","E","E","E",}
+    { "I", "E", "E", "I", "E" },
+    { "E", "E", "E", "E", "E",}
 };
 
     void Start()
@@ -24,7 +24,10 @@ public class Scenario1 : MonoBehaviour
 
     void Update()
     {
-
+        if(SelectUnit.selected==true){
+            CreateGame();
+            SelectUnit.selected=false;
+        }
     }
     public void CreateGame()
     {
