@@ -22,13 +22,6 @@ public class Scenario1 : MonoBehaviour
         CreateGame();
     }
 
-    void Update()
-    {
-        if(SelectUnit.selected==true){
-            CreateGame();
-            SelectUnit.selected=false;
-        }
-    }
     public void CreateGame()
     {
         for (int i = 0; i < myArray.GetLength(0); i++)

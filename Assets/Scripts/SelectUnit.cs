@@ -8,24 +8,32 @@ public class SelectUnit : MonoBehaviour
 {
     int selectedx;
     int selectedy;
-    public static bool selected;
+    bool selected = false;
     public Camera camera;
     float ys;
     float xs;
     float x;
     float y;
-    
-
+    public GameObject _inf;
+    string[,] GameArray = Scenario1.myArray;
 
     void Start()
     {
         camera = Camera.main;
     }
 
+    void DestroyWithTag (string destroyTag)
+    {
+        GameObject[] destroyObject;
+        destroyObject = GameObject.FindGameObjectsWithTag(destroyTag);
+        foreach (GameObject oneObject in destroyObject)
+        Destroy (oneObject);
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
-        {
+        {   
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -36,9 +44,13 @@ public class SelectUnit : MonoBehaviour
                 if(selected == true){
                     x = hit.collider.transform.position.x;
                     y = hit.collider.transform.position.y;
-                    Scenario1.myArray[(int)ys,(int)xs] = "E";
-                    Scenario1.myArray[(int)y,(int)x] = "I";
+                    GameArray[(int)xs,(int)ys] = "E";
+                    GameArray[(int)x,(int)y] = "I";
                     selected = false;
+                    Debug.Log(GameArray);
+                    DestroyWithTag(("FieldObject"));
+                    CreateGame();
+                    
                     
                 }
                 else{
@@ -46,6 +58,7 @@ public class SelectUnit : MonoBehaviour
                     ys = hit.collider.transform.position.y;
                     selected = true;
                 }
+                Debug.Log(selected);
                 
 
             }
@@ -54,7 +67,18 @@ public class SelectUnit : MonoBehaviour
     }
 
     
-
+    void CreateGame(){
+                for (int i = 0; i < GameArray.GetLength(0); i++)
+        {
+            for (int j = 0; j < GameArray.GetLength(1); j++)
+            {
+                if (GameArray[i, j] == "I")
+                {
+                    Instantiate( _inf, new Vector3(i, j, -0.1f), Quaternion.identity);
+                }
+            }
+        }
+    }
 
 
 }

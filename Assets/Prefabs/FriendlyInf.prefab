@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8671319789702040219}
   m_Layer: 0
   m_Name: FriendlyInf
-  m_TagString: Untagged
+  m_TagString: FieldObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
