@@ -14,6 +14,7 @@ public class SelectUnit : MonoBehaviour
     float xs;
     float x;
     float y;
+    int result;
     public GameObject _inf;
     string[,] GameArray = Scenario1.myArray;
 
@@ -30,6 +31,11 @@ public class SelectUnit : MonoBehaviour
         Destroy (oneObject);
     }
 
+    void distancebetween(ex,ey){
+        result = Mathf.Sqrt(Mathf.Pow((int()ys - y);, 2); + Mathf.Pow((int()ys - y);, 2););
+                        if(result > 1){
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -42,15 +48,21 @@ public class SelectUnit : MonoBehaviour
                 if (hit.collider != null)
                 Debug.Log($"{hit.collider.name} Detected",hit.collider.gameObject);
                 if(selected == true){
+                    
                     x = hit.collider.transform.position.x;
                     y = hit.collider.transform.position.y;
-                    GameArray[(int)xs,(int)ys] = "E";
-                    GameArray[(int)x,(int)y] = "I";
-                    selected = false;
-                    Debug.Log(GameArray);
-                    DestroyWithTag(("FieldObject"));
-                    CreateGame();
+                    if(GameArray[(int)x,(int)y] == "E"){
+                        
+                            GameArray[(int)xs,(int)ys] = "E";
+                            GameArray[(int)x,(int)y] = "I";
+                            selected = false;
+                            Debug.Log(GameArray);
+                            DestroyWithTag(("FieldObject"));
+                            CreateGame();
+                        }
+                        
                     
+                    }
                     
                 }
                 else{
