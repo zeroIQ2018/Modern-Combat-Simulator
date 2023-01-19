@@ -31,10 +31,8 @@ public class SelectUnit : MonoBehaviour
         Destroy (oneObject);
     }
 
-    //void distancebetween(ex,ey){
-      //  result = Mathf.Sqrt(Mathf.Pow((int()ys - y);, 2); + Mathf.Pow((int()ys - y);, 2););
-         //               if(result > 1){
-    
+
+
 
     void Update()
     {
@@ -46,44 +44,55 @@ public class SelectUnit : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {   
                 if (hit.collider != null)
-                Debug.Log($"{hit.collider.name} Detected",hit.collider.gameObject);
-                if(selected == true)
                 {
-                    
-                    x = hit.collider.transform.position.x;
-                    y = hit.collider.transform.position.y;
+                    Debug.Log($"{hit.collider.name} Detected",hit.collider.gameObject);
+                    if(selected == true)
+                    {
+                        
+                        x = hit.collider.transform.position.x;
+                        y = hit.collider.transform.position.y;
                         if (GameArray[(int)x, (int)y] == "E")
                         {
-
-                            GameArray[(int)xs, (int)ys] = "E";
-                            GameArray[(int)x, (int)y] = "I";
-                            selected = false;
-                            Debug.Log(GameArray);
-                            DestroyWithTag(("FieldObject"));
-                            CreateGame();
+                            if (Mathf.Abs(xs - x) <= 1 && Mathf.Abs(ys - y) <= 1){
+                                GameArray[(int)xs, (int)ys] = "E";
+                                GameArray[(int)x, (int)y] = "I";
+                                DestroyWithTag(("FieldObject"));
+                                CreateGame();
+                                selected = false;
+                                
+                            }
                         }
 
 
                     
                     
-                }
-                else
+                    }
+                if(GameArray[(int)xs, (int)ys] != "E" && selected == false)
+                
                 {
                     xs = hit.collider.transform.position.x;
                     ys = hit.collider.transform.position.y;
                     selected = true;
                 }
-                Debug.Log(selected);
                 
+                
+                }
+                else{
+                    selected = false;
+                    
 
+                    
+                }
+                Debug.Log(selected);
             }
         }
 
     }
 
     
-    void CreateGame(){
-                for (int i = 0; i < GameArray.GetLength(0); i++)
+    void CreateGame()
+    {
+        for (int i = 0; i < GameArray.GetLength(0); i++)
         {
             for (int j = 0; j < GameArray.GetLength(1); j++)
             {
@@ -95,6 +104,4 @@ public class SelectUnit : MonoBehaviour
         }
     }
 
-
 }
-
