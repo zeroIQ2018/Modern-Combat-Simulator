@@ -16,6 +16,9 @@ public class SelectUnit : MonoBehaviour
     float bys;
     int result;
     public GameObject _inf;
+    public GameObject _Einf;
+    public GameObject _FT;
+    public GameObject _ET;
     string[,] GameArray = Scenario1.myArray;
 
     void Start()
@@ -51,77 +54,76 @@ public class SelectUnit : MonoBehaviour
 
                         x = hit.collider.transform.position.x;
                         y = hit.collider.transform.position.y;
-                        if (GameArray[(int)x, (int)y] == "E")
+                        if (GameArray[(int)x, (int)y] != "FI")
                         {
                             if (Mathf.Abs(xs - x) <= 1 && Mathf.Abs(ys - y) <= 1)
-                            {
+                            {   
                                 GameArray[(int)xs, (int)ys] = "E";
-                                GameArray[(int)x, (int)y] = "I";
+                                GameArray[(int)x, (int)y] = "FI";
                                 DestroyWithTag(("FieldObject"));
-                                CreateGame();
+                                Scenario1.CreateGame();
                                 selected = false;
 
                             }
                         }
+                        else{
+                            selected = false;
+                        }
 
 
 
 
                     }
-<<<<<<< Updated upstream
-                    if (selected == false)
+                
+                    if(selected == false)
                     {
                         bxs = hit.collider.transform.position.x;
                         bys = hit.collider.transform.position.y;
-                        if (GameArray[(int)bxs, (int)bys] != "E")
+                        if(GameArray[(int)bxs, (int)bys] != "E" )
                         {
                             xs = hit.collider.transform.position.x;
                             ys = hit.collider.transform.position.y;
                             selected = true;
+
+
                         }
-
-=======
-                if(selected == false)
-                {
-                    bxs = hit.collider.transform.position.x;
-                    bys = hit.collider.transform.position.y;
-                    if(GameArray[(int)bxs, (int)bys] != "E" )
-                    {
-                        xs = hit.collider.transform.position.x;
-                        ys = hit.collider.transform.position.y;
-                        selected = true;
-
-
                     }
                 }
                 
                 
-                }
-                else{
-                    selected = false;
-                    
->>>>>>> Stashed changes
-
-                    }
-                    Debug.Log(selected);
-                }
+                Debug.Log(selected);
+                
             }
 
         }
 
-
+    /*
         void CreateGame()
         {
             for (int i = 0; i < GameArray.GetLength(0); i++)
             {
                 for (int j = 0; j < GameArray.GetLength(1); j++)
                 {
-                    if (GameArray[i, j] == "I")
+                    if (myArray[i, j] == "FI")
                     {
-                        Instantiate(_inf, new Vector3(i, j, -0.1f), Quaternion.identity);
+                        Instantiate( _inf, new Vector3(i, j, -0.1f), Quaternion.identity);
+                    }
+                    else if (myArray[i, j] == "EI")
+                    {
+                        Instantiate(_Einf, nev Vector3(i, j -0.1f),Quaternion.identity)
+                    }
+                    else if (myArray[i, j] == "FT")
+                    {
+                        Instantiate(_FT, nev Vector3(i, j -0.1f),Quaternion.identity)
+                    }
+                    else if (myArray[i, j] == "ET")
+                    {
+                        Instantiate(_ET, nev Vector3(i, j -0.1f),Quaternion.identity)
                     }
                 }
             }
         }
+    */
     }
+
 }
