@@ -68,6 +68,7 @@ public class SelectUnit : MonoBehaviour
 
 
                     }
+<<<<<<< Updated upstream
                     if (selected == false)
                     {
                         bxs = hit.collider.transform.position.x;
@@ -79,6 +80,27 @@ public class SelectUnit : MonoBehaviour
                             selected = true;
                         }
 
+=======
+                if(selected == false)
+                {
+                    bxs = hit.collider.transform.position.x;
+                    bys = hit.collider.transform.position.y;
+                    if(GameArray[(int)bxs, (int)bys] != "E" )
+                    {
+                        xs = hit.collider.transform.position.x;
+                        ys = hit.collider.transform.position.y;
+                        selected = true;
+
+
+                    }
+                }
+                
+                
+                }
+                else{
+                    selected = false;
+                    
+>>>>>>> Stashed changes
 
                     }
                     Debug.Log(selected);
