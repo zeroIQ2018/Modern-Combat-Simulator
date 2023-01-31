@@ -15,7 +15,7 @@ public class Scenario1 : MonoBehaviour
     { "FI", "FI", "E", "E", "E" },
     { "E", "E", "E", "FI", "FI" },
     { "E", "FI", "FI", "FI", "FI" },
-    { "E", "E", "E", "FI", "FI" },
+    { "E", "FT", "FT", "FT", "FI" },
     { "FI", "FI", "FI", "FI", "E" },
     { "FI", "E", "E", "FI", "E" },
     { "E", "E", "E", "E", "E",}
@@ -38,15 +38,15 @@ public class Scenario1 : MonoBehaviour
                 }
                 else if (myArray[i, j] == "EI")
                 {
-                    Instantiate(_Einf, nev Vector3(i, j -0.1f),Quaternion.identity)
+                    Instantiate(_Einf, new Vector3(i, j,  -0.1f),Quaternion.identity);
                 }
                 else if (myArray[i, j] == "FT")
                 {
-                    Instantiate(_FT, nev Vector3(i, j -0.1f),Quaternion.identity)
+                    Instantiate(_FT, new Vector3(i, j, -0.1f),Quaternion.identity);
                 }
                 else if (myArray[i, j] == "ET")
                 {
-                    Instantiate(ET, nev Vector3(i, j -0.1f),Quaternion.identity)
+                    Instantiate(_ET, new Vector3(i, j,  -0.1f),Quaternion.identity);
                 }
             }
         }

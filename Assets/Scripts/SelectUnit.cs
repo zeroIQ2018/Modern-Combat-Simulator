@@ -15,6 +15,7 @@ public class SelectUnit : MonoBehaviour
     float bxs;
     float bys;
     int result;
+    string uns;
     public GameObject _inf;
     public GameObject _Einf;
     public GameObject _FT;
@@ -54,14 +55,15 @@ public class SelectUnit : MonoBehaviour
 
                         x = hit.collider.transform.position.x;
                         y = hit.collider.transform.position.y;
-                        if (GameArray[(int)x, (int)y] != "FI")
+                        if (GameArray[(int)x, (int)y] == "E")
                         {
                             if (Mathf.Abs(xs - x) <= 1 && Mathf.Abs(ys - y) <= 1)
                             {   
+                                uns = GameArray[(int)xs,(int)ys];
                                 GameArray[(int)xs, (int)ys] = "E";
-                                GameArray[(int)x, (int)y] = "FI";
+                                GameArray[(int)x, (int)y] = uns;
                                 DestroyWithTag(("FieldObject"));
-                                Scenario1.CreateGame();
+                                CreateGame();
                                 selected = false;
 
                             }
@@ -97,33 +99,34 @@ public class SelectUnit : MonoBehaviour
 
         }
 
-    /*
+    
         void CreateGame()
         {
             for (int i = 0; i < GameArray.GetLength(0); i++)
             {
                 for (int j = 0; j < GameArray.GetLength(1); j++)
                 {
-                    if (myArray[i, j] == "FI")
+                    if (GameArray[i, j] == "FI")
                     {
                         Instantiate( _inf, new Vector3(i, j, -0.1f), Quaternion.identity);
                     }
-                    else if (myArray[i, j] == "EI")
+                    else if (GameArray[i, j] == "EI")
                     {
-                        Instantiate(_Einf, nev Vector3(i, j -0.1f),Quaternion.identity)
+                        Instantiate(_Einf, new Vector3(i, j, -0.1f),Quaternion.identity);
                     }
-                    else if (myArray[i, j] == "FT")
+                    else if (GameArray[i, j] == "FT")
                     {
-                        Instantiate(_FT, nev Vector3(i, j -0.1f),Quaternion.identity)
+                        Instantiate(_FT, new Vector3(i, j ,-0.1f),Quaternion.identity);
                     }
-                    else if (myArray[i, j] == "ET")
+                    else if (GameArray[i, j] == "ET")
                     {
-                        Instantiate(_ET, nev Vector3(i, j -0.1f),Quaternion.identity)
+                        Instantiate(_ET, new Vector3(i, j, -0.1f),Quaternion.identity);
                     }
-                }
+            
+                }    
             }
         }
-    */
+
     }
 
 }
